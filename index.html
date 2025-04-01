@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/GZero-Studio/gzero-studio.github.io/refs/heads/main/images/Icon.png">
+    <title>G0 Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="google-site-verification" content="CGmFcts1WrUx12sfdjLdVmYhfZpY-57ctWMIqSg93Js" />
+    <meta name="description" content="G0 Studio - Innovative gaming studio specializing in 2d games. Explore and experience the future of indie game development.">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 300;
+            color: white;
+            background-color: black;
+            overflow-x: hidden;
+        }
+
+        /* Canvas for stars animation */
+        #stars-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Container and section styles */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .logo {
+            width: 300px;
+            height: auto;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Games section */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .games-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .game-card {
+            flex: 0 0 350px;
+            max-width: 350px;
+            background-color: #111111;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .game-image {
+            height: 200px;
+            background-color: #222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: pixelated;
+            transition: transform 0.5s ease;
+        }
+
+        .game-card:hover .game-image img {
+            transform: scale(1.1);
+        }
+
+        .game-content {
+            padding: 20px;
+        }
+
+        .game-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .game-description {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+            background-color: none;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .contact-email {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-email:hover {
+            color: #aaaaaa;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #aaaaaa;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #222;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #777777;
+            margin-top: 20px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .logo {
+                width: 250px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .games-grid {
+                padding: 0px 30px 0 30px;
+            }
+            
+            .game-card {
+                flex: 0 0 300px;
+                max-width: 300px;
+            }
+
+            .contact-email {
+                font-size: 0.9rem;
+                word-break: break-all;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars canvas -->
+    <canvas id="stars-canvas"></canvas>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <img src="images/Logo.png" alt="G0 Studio Logo" class="logo">
+            <h1>Shaping the Future of Gaming</h1>
+            <p class="hero-subtitle">We focus on creativity and innovation to take gameplay to the next level</p>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Our Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9IFxdw1yAGwQFItFQslaio0yCcEWa8Q9NpXQJ-KKQWrmbExhGHhGqLO4&s=10" alt="GatCats">
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">GatCats (Coming Soon)</h3>
+
+                        <p class="game-description">An action game in which you fight cats to save your cat. </p>
+
+ 
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="images/Icon.png" alt="G0 Studio Logo" class="footer-logo">
+                
+                <h3 class="contact-title">Contact Us</h3>
+                <a href="mailto:g0studio.contact@gmail.com" class="contact-email">G0STUDIO.CONTACT@GMAIL.COM</a>
+                
+                <div class="social-links">
+                    <a href="https://x.com/G0StudioDev" target="_blank" rel="noopener noreferrer" class="social-link">X</a>
+                    <a href="https://youtube.com/@g0studio-dev?si=RYAb_4Ady8DuQSLI" target="_blank" rel="noopener noreferrer" class="social-link">YouTube</a>
+                    <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" class="social-link">Facebook</a>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <p class="copyright">© <span id="current-year"></span> G0 Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        // Set current year in copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Stars animation
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size to window size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        // Star class
+        class Star {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speed = Math.random() * 0.8 + 0.2;
+                this.opacity = Math.random() * 0.8 + 0.2;
+            }
+            
+            update() {
+                this.y -= this.speed;
+                
+                // Reset star when it goes off screen
+                if (this.y < -10) {
+                    this.reset();
+                    this.y = canvas.height + 10;
+                }
+            }
+            
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        // Create stars
+        const starCount = Math.floor(window.innerWidth * window.innerHeight / 3000);
+        const stars = [];
+        
+        for (let i = 0; i < starCount; i++) {
+            stars.push(new Star());
+            // Distribute stars throughout the canvas initially
+            stars[i].y = Math.random() * canvas.height;
+        }
+        
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+    </script>
+</body>
+</html>
