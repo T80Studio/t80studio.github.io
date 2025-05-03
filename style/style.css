@@ -1,246 +1,289 @@
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* Reset and base styles (Original) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 300;
-            color: white;
-            background-color: black;
-            overflow-x: hidden;
-        }
+body {
+    /* Using Orbitron font as requested */
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 300;
+    color: white;
+    background-color: black;
+    /* Allow vertical scrolling */
+    /* overflow-x: hidden; */
+    padding-top: 40px; /* Added padding for spacing */
+    padding-bottom: 40px; /* Added padding for spacing */
+}
 
-        /* Canvas for stars animation */
-        #stars-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
+/* Canvas for stars animation (Original) */
+#stars-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
 
-        /* Container and section styles */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
+/* Container and section styles (Original, adjusted padding) */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
 
-        section {
-            padding: 80px 0;
-        }
+section {
+    /* Adjusted padding for sections if needed, or keep original */
+    padding: 80px 0;
+}
 
-        /* Hero section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
+/* Hero section (Original) */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
 
-        .hero-content {
-            max-width: 800px;
-        }
+.hero-content {
+    max-width: 800px;
+}
 
-        .logo {
-            width: 300px;
-            height: auto;
-            margin-bottom: 40px;
-        }
+.logo {
+    width: 300px;
+    height: auto;
+    margin-bottom: 40px;
+}
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
 
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: #cccccc;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #cccccc;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
 
-        /* Games section */
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 60px;
-            text-align: center;
-        }
+/* Games section title (Adapted from example) */
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 70px;
+    text-align: center;
+    color: #ffffff; /* White color */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3); /* Subtle white shadow */
+}
 
-        .games-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
+/* --- MODIFIED Games section --- */
+/* Games grid styles (Modified for Vertical layout) */
+.games-grid {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards horizontally */
+    gap: 50px; /* Space between cards */
+    /* Removed padding from original as centering handles spacing */
+}
 
-        .game-card {
-            flex: 0 0 350px;
-            max-width: 350px;
-            background-color: #111111;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
+/* Game card styles (Modified with Professional B&W Hover Effect) */
+.game-card {
+    width: 85%; /* Card width relative to container */
+    max-width: 700px; /* Maximum card width */
+    background-color: #111111;
+    border-radius: 15px; /* Slightly more rounded corners */
+    overflow: hidden; /* Important for border effects */
+    position: relative;
+    z-index: 1;
+    /* Transition for hover effects */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    border: 1px solid #444; /* Darker grey border */
+}
 
-        .game-card:hover {
-            transform: translateY(-10px);
-        }
+/* Hover effect (Black & White) */
+.game-card:hover {
+    transform: translateY(-8px) scale(1.02); /* Lift and slight scale */
+    /* Deeper black shadow + subtle white glow */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.15);
+    border-color: #eee; /* Border becomes light grey/white on hover */
+}
 
-        .game-image {
-            height: 200px;
-            background-color: #222;
-            position: relative;
-            overflow: hidden;
-        }
+/* Game image styles (Modified) */
+.game-image {
+    height: 300px; /* Image container height */
+    background-color: #222;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #444; /* Separator line */
+}
 
-        .game-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            image-rendering: pixelated;
-            transition: transform 0.5s ease;
-        }
+.game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area without distortion */
+    transition: transform 0.5s ease, filter 0.5s ease; /* Smooth transition for hover */
+    filter: saturate(0.8); /* Slightly desaturated initially */
+}
 
-        .game-card:hover .game-image img {
-            transform: scale(1.1);
-        }
+.game-card:hover .game-image img {
+    transform: scale(1.05); /* Zoom in image on hover */
+    filter: saturate(1) brightness(1.1); /* Restore saturation and slightly brighten */
+}
 
-        .game-content {
-            padding: 20px;
-        }
+/* Game content styles (Modified) */
+.game-content {
+    padding: 30px; /* Increased padding */
+    background-color: #111111;
+    position: relative;
+    z-index: 2; /* Ensure content is above any pseudo-elements if added later */
+}
 
-        .game-title {
-            font-size: 1.25rem;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
+.game-title {
+    font-size: 1.6rem; /* Larger title */
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #f0f0f0; /* Off-white color */
+}
 
-        .game-description {
-            color: #aaaaaa;
-            font-size: 0.9rem;
-        }
+.game-description {
+    color: #cccccc; /* Lighter grey for description */
+    font-size: 1rem;
+    line-height: 1.7; /* Increased line height for readability */
+}
+/* --- End of MODIFIED Games section --- */
 
-        /* Footer */
-        footer {
-            padding: 60px 0 30px;
-            background-color: none;
-            text-align: center;
-        }
 
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+/* Footer (Original) */
+footer {
+    padding: 60px 0 30px;
+    background-color: none; /* Assuming transparent background */
+    text-align: center;
+    position: relative; /* Ensure footer content is above stars canvas */
+    z-index: 1;
+}
 
-        .footer-logo {
-            width: 100px;
-            height: auto;
-            margin-bottom: 30px;
-        }
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .contact-title {
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
+.footer-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 30px;
+}
 
-        .contact-email {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: inline-block;
-            letter-spacing: 0.5px;
-        }
+.contact-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
 
-        .contact-email:hover {
-            color: #aaaaaa;
-        }
+.contact-email {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
+.contact-email:hover {
+    color: #aaaaaa;
+}
 
-        .social-link {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
 
-        .social-link:hover {
-            color: #aaaaaa;
-        }
+.social-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
 
-        .divider {
-            height: 1px;
-            background-color: #222;
-            margin: 20px 0;
-            width: 100%;
-            max-width: 400px;
-        }
+.social-link:hover {
+    color: #aaaaaa;
+}
 
-        .copyright {
-            font-size: 0.8rem;
-            color: #777777;
-            margin-top: 20px;
-        }
+.divider {
+    height: 1px;
+    background-color: #222;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 400px;
+}
 
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .logo {
-                width: 250px;
-            }
+.copyright {
+    font-size: 0.8rem;
+    color: #777777;
+    margin-top: 20px;
+}
 
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .games-grid {
-                padding: 0px 30px 0 30px;
-            }
-            
-            .game-card {
-                flex: 0 0 300px;
-                max-width: 300px;
-            }
+/* Responsive styles (Adjusted for new card layout) */
+@media (max-width: 768px) {
+    .logo { /* Original responsive */
+        width: 250px;
+    }
 
-            .contact-email {
-                font-size: 0.9rem;
-                word-break: break-all;
-            }
-            
-            .social-links {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
+    h1 { /* Original responsive */
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle { /* Original responsive */
+        font-size: 1rem;
+    }
+
+    .section-title { /* Adapted from example */
+        font-size: 2.2rem;
+    }
+
+    /* --- Responsive adjustments for Game Cards --- */
+    .game-card {
+        width: 95%; /* Increase width slightly on smaller screens */
+        max-width: 95%; /* Allow card to take most of the width */
+    }
+
+    .game-image {
+        height: 250px; /* Reduce image height on smaller screens */
+    }
+
+    .game-title {
+        font-size: 1.4rem; /* Adjust title size */
+    }
+
+    .game-description {
+        font-size: 0.95rem; /* Adjust description size */
+    }
+    /* --- End of responsive adjustments for Game Cards --- */
+
+    .contact-email { /* Original responsive */
+        font-size: 0.9rem;
+        word-break: break-all;
+    }
+
+    .social-links { /* Original responsive */
+        /* Keep as row or change to column if preferred */
+        /* flex-direction: column; */
+        /* gap: 15px; */
+    }
+}
