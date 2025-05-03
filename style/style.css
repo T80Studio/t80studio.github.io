@@ -133,7 +133,7 @@ h1 {
     height: 100%;
     object-fit: cover; /* Cover the area without distortion */
     transition: transform 0.5s ease, filter 0.5s ease; /* Smooth transition for hover */
-    filter: saturate(0.8); /* Slightly desaturated initially */
+    image-rendering: pixelated;
 }
 
 .game-card:hover .game-image img {
