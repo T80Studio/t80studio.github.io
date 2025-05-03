@@ -132,8 +132,8 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Cover the area without distortion */
-    transition: transform 0.5s ease, filter 0.5s ease; /* Smooth transition for hover */
     image-rendering: pixelated;
+    transition: transform 0.5s ease, filter 0.5s ease; /* Smooth transition for hover */
 }
 
 .game-card:hover .game-image img {
