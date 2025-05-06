@@ -13,12 +13,7 @@
     <meta name="description" content="T80 Studio - Innovative gaming studio specializing in 2d games. Explore and experience the future of indie game development.">
     <link rel="stylesheet" href="style/style.css">
     <style>
-    body.splash-loading, html.splash-loading {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-    }
+    /* Removed body.splash-loading, html.splash-loading styles */
 
     @keyframes fadeOutSplashAnimation {
         0% { opacity: 1; visibility: visible; }
@@ -34,7 +29,7 @@
         background-color: #000000;
         z-index: 9999;
         animation-name: fadeOutSplashAnimation;
-        animation-duration: 1s;
+        animation-duration: 0.5s; /* Duration from previous request */
         animation-delay: 0s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
@@ -90,15 +85,6 @@
             </div>
         </div>
     </footer>
-    <script>
-      document.body.classList.add('splash-loading');
-      document.documentElement.classList.add('splash-loading');
-      
-      setTimeout(() => {
-        document.body.classList.remove('splash-loading');
-        document.documentElement.classList.remove('splash-loading');
-      }, 800);
-    </script>
     <script src="style/background.js"></script>
 </body>
 
