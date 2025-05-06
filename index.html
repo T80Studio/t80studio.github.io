@@ -22,39 +22,7 @@
 
     @keyframes fadeOutSplashAnimation {
         0% { opacity: 1; visibility: visible; }
-        99% { opacity: 0; visibility: visible; }
         100% { opacity: 0; visibility: hidden; }
-    }
-
-    @keyframes moveInAnimation {
-        0% {
-            top: calc(50% - 50vmax);
-            left: calc(50% + 50vmax);
-            transform: translate(-50%, -50%);
-        }
-        100% {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    }
-
-    @keyframes imageImpactAnimation {
-        0%, 100% {
-            transform: translate(0, 0);
-        }
-        50% {
-            transform: translate(-100px, 100px);
-        }
-    }
-
-    @keyframes boxImpactAnimation {
-        0%, 100% {
-            transform: translate(-50%, -50%);
-        }
-        50% {
-             transform: translate(-50%, -50%) translate(-100px, 100px);
-        }
     }
 
     #splash-screen-container {
@@ -64,49 +32,12 @@
         width: 100%;
         height: 100%;
         background-color: #000000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9998;
+        z-index: 9999;
         animation-name: fadeOutSplashAnimation;
-        animation-duration: 0.5s;
-        animation-delay: 2s;
+        animation-duration: 1s;
+        animation-delay: 0s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
-    }
-
-    #splash-image-content {
-        display: block;
-        width: 460px;
-        height: 460px;
-        object-fit: contain;
-        position: relative;
-        animation-name: imageImpactAnimation;
-        animation-duration: 0.3s;
-        animation-delay: 1.2s;
-        animation-timing-function: easeOut;
-        animation-fill-mode: none;
-        z-index: 9998; /* To be under the line image if they overlap */
-    }
-
-    #splash-white-box {
-        position: fixed; /* Still fixed to position relative to viewport for moveIn */
-        top: calc(50% - 50vmax);
-        left: calc(50% + 50vmax);
-        width: 460px;
-        height: 460px;
-        z-index: 9999; /* Higher z-index to be on top */
-        transform: translate(-50%, -50%);
-        transform-origin: center center;
-        opacity: 1;
-        visibility: visible;
-        object-fit: contain;
-        /* Removed fadeOutSplashAnimation as it will fade with parent */
-        animation-name: moveInAnimation, boxImpactAnimation;
-        animation-duration: 0.2s, 0.3s;
-        animation-delay: 1s, 1.2s;
-        animation-timing-function: cubic-bezier(0.9,0.03,0.69,0.22), easeOut;
-        animation-fill-mode: forwards, none;
     }
     </style>
     
@@ -116,11 +47,6 @@
     <canvas id="stars-canvas"></canvas>
 
     <div id="splash-screen-container">
-        <img id="splash-white-box" src="images/0Line.png" alt="the line">
-        <img id="splash-image-content"
-             src="images/AnimationLogo.png"
-             alt="Splash image"
-             onerror="this.style.display='none'; console.error('Failed to load splash image.');">
     </div>
     
     <section class="hero">
@@ -171,7 +97,7 @@
       setTimeout(() => {
         document.body.classList.remove('splash-loading');
         document.documentElement.classList.remove('splash-loading');
-      }, 2050);
+      }, 800);
     </script>
     <script src="style/background.js"></script>
 </body>
