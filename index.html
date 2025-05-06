@@ -44,7 +44,7 @@
             transform: translate(0, 0);
         }
         50% {
-            transform: translate(-15px, 30px);
+            transform: translate(-25px, 40px);
         }
     }
 
@@ -53,7 +53,7 @@
             transform: translate(-50%, -50%);
         }
         50% {
-             transform: translate(-50%, -50%) translate(-15px, 30px);
+             transform: translate(-50%, -50%) translate(-25px, 40px);
         }
     }
 
@@ -80,51 +80,49 @@
         width: 460px;
         height: 460px;
         object-fit: contain;
-        border-radius: 8px;
         position: relative;
         animation-name: imageImpactAnimation;
         animation-duration: 0.3s;
         animation-delay: 1.2s;
         animation-timing-function: ease-out;
         animation-fill-mode: none;
+        z-index: 9998; /* To be under the line image if they overlap */
     }
 
     #splash-white-box {
-        position: fixed;
+        position: fixed; /* Still fixed to position relative to viewport for moveIn */
         top: calc(50% - 50vmax);
         left: calc(50% + 50vmax);
         width: 460px;
         height: 460px;
-        z-index: 9999;
-        transform: translate(-50%, -50%) rotate(45deg);
+        z-index: 9999; /* Higher z-index to be on top */
+        transform: translate(-50%, -50%);
         transform-origin: center center;
         opacity: 1;
         visibility: visible;
+        object-fit: contain;
+        /* Removed fadeOutSplashAnimation as it will fade with parent */
         animation-name: moveInAnimation, boxImpactAnimation;
-        animation-duration: 0.2s, 0.3s, 0.5s;
-        animation-delay: 1s, 1.2s, 2s;
-        animation-timing-function: cubic-bezier(0.9,0.03,0.69,0.22), ease-out, ease-out;
-        animation-fill-mode: forwards, none, forwards;
+        animation-duration: 0.2s, 0.3s;
+        animation-delay: 1s, 1.2s;
+        animation-timing-function: cubic-bezier(0.9,0.03,0.69,0.22), ease-out;
+        animation-fill-mode: forwards, none;
     }
-
     </style>
     
 </head>
 
 <body>
-    <!-- Stars canvas -->
     <canvas id="stars-canvas"></canvas>
 
-    <img id="splash-white-box" src="images/0Line.png" alt="the line"></img>
-    
     <div id="splash-screen-container">
+        <img id="splash-white-box" src="images/0Line.png" alt="the line">
         <img id="splash-image-content"
              src="images/AnimationLogo.png"
              alt="Splash image"
              onerror="this.style.display='none'; console.error('Failed to load splash image.');">
     </div>
     
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
             <img src="images/Logo.png" alt="T80 Studio Logo" class="logo">
@@ -133,7 +131,6 @@
         </div>
     </section>
 
-    <!-- Games Section -->
     <section>
         <div class="container">
             <h2 class="section-title">Our Games</h2>
@@ -147,42 +144,35 @@
                         <p class="game-description">T80 Studio's next innovative game project. Currently under development.</p>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <img src="images/Icon.png" alt="T80 Studio Logo" class="footer-logo">
-
                 <h3 class="contact-title">Contact Us</h3>
                 <a href="mailto:t80studio.contact@gmail.com" class="contact-email">t80studio.contact@gmail.com</a>
-
                 <div class="social-links">
                     <a href="https://x.com/T80Studio" target="_blank" rel="noopener noreferrer" class="social-link">X</a>
                     <a href="https://www.youtube.com/channel/UCcgU6iWkY5gvr_J8-84vqRw" target="_blank" rel="noopener noreferrer" class="social-link">YouTube</a>
                     <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-link">Facebook</a>
                 </div>
-
                 <div class="divider"></div>
-
                 <p class="copyright">© <span id="current-year"></span> T80 Studio. All rights reserved.</p>
             </div>
         </div>
     </footer>
     <script>
-        document.body.classList.add('splash-loading');
-        document.documentElement.classList.add('splash-loading');
+      document.body.classList.add('splash-loading');
+      document.documentElement.classList.add('splash-loading');
       
-        setTimeout(() => {
-          document.body.classList.remove('splash-loading');
-          document.documentElement.classList.remove('splash-loading');
-        }, 3500);
-      </script>
+      setTimeout(() => {
+        document.body.classList.remove('splash-loading');
+        document.documentElement.classList.remove('splash-loading');
+      }, 2500);
+    </script>
     <script src="style/background.js"></script>
 </body>
 
