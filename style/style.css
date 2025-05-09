@@ -11,10 +11,8 @@ body {
     font-weight: 300;
     color: white;
     background-color: black;
-    /* Allow vertical scrolling */
-    /* overflow-x: hidden; */
-    padding-top: 20px; /* Added padding for spacing */
-    padding-bottom: 20px; /* Added padding for spacing */
+    padding-top: 10px; /* Added padding for spacing */
+    padding-bottom: 10px; /* Added padding for spacing */
 }
 
 /* Canvas for stars animation (Original) */
@@ -67,6 +65,7 @@ h1 {
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.4);
 }
 
 .hero-subtitle {
@@ -84,7 +83,6 @@ h1 {
     margin-bottom: 70px;
     text-align: center;
     color: #ffffff; /* White color */
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3); /* Subtle white shadow */
 }
 
 /* --- MODIFIED Games section --- */
